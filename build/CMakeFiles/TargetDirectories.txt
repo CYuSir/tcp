@@ -1,4 +1,0 @@
-/home/yusir/222/tcp/build/CMakeFiles/server.dir
-/home/yusir/222/tcp/build/CMakeFiles/client.dir
-/home/yusir/222/tcp/build/CMakeFiles/edit_cache.dir
-/home/yusir/222/tcp/build/CMakeFiles/rebuild_cache.dir
