@@ -8,15 +8,15 @@
 #include <iostream>
 #include <thread>
 
-#include "thread.h"
+// #include "thread.h"
 
 using namespace std;
 // const int MAX_EVENTS = 10;
 const int BUFFER_SIZE = 1024;
 ThreadPool threadPool(4);
 
-void handleMessage(int client_socket, char* buf, int bytesRead) {
-#if 0
+void handleMessage(int client_socket, const char* buf, int bytesRead) {
+#if 1
     cout << "Received: " << string(buf, bytesRead) << endl;
     std::string replyMessage = "Server: " + string(buf, bytesRead);
     cout << "Sending: " << replyMessage << endl;
@@ -117,8 +117,9 @@ int eventLoop() {
                     close(currentSocket);
                     continue;
                 }
-
-                handleMessage(currentSocket, buffer, bytesRead);
+                // handleMessage(currentSocket, buffer, bytesRead);
+                auto task = [currentSocket, buffer, bytesRead]() { handleMessage(currentSocket, buffer, bytesRead); };
+                threadPool.enqueue(task);
             }
         }
     }

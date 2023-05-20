@@ -2,12 +2,15 @@ cmake_minimum_required(VERSION 3.10)
 
 project(tcp_epoll_demo)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 14)
 
 # Server executable
 add_executable(server
     src/server.cpp
+    src/thread.cpp
     include/server.h
+    include/thread.h
+    include/ThreadPool.h
 )
 
 # Client executable
